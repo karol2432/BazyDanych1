@@ -15,7 +15,13 @@ CREATE TABLE rozliczenia.godziny
 	id_pracownika character varying,
 	CONSTRAINT godziny_pkey PRIMARY KEY (id_godziny)
 );
-
+CREATE TABLE rozliczenia.premie
+(
+	id_premii character varying NOT NULL,
+	rodzaj character varying,
+	kwota character varying,
+	CONSTRAINT premie_pkey PRIMARY KEY (id_premii)
+);
 
 CREATE TABLE rozliczenia.pensje
 (
@@ -27,10 +33,4 @@ CREATE TABLE rozliczenia.pensje
 );
 
 
-CREATE TABLE rozliczenia.premie
-(
-	id_premii character varying NOT NULL,
-	rodzaj character varying,
-	kwota character varying,
-	CONSTRAINT premie_pkey PRIMARY KEY (id_premii)
-);
+
