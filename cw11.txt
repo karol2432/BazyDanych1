@@ -1,0 +1,17 @@
+Zad.1
+Z kluczem głównym:
+Zapytanie wykorzystuje indeks sklastrowany na kolumnach SalesOrderID oraz SalesOrderDetailID, dzieki czemu mamy możliwość do szybkiego przeszukiwania rekordów zmniejszając koszty operacji I/O(koszty wynosiły w zaokrągleniu do częsci tysięcznych 0.003) oraz CPU(koszty wynosiły w zaokrągleniu do części dziesieciotysiecznych 0.0002). Ponadto ilość wczytanych wierszy bedzie minimalna-1.
+
+Bez klucza głównego:
+ Przeszukało o wiele wiecej wierszy-ponad 120000, koszty były oeracji były o wiele wieksze I/O na poziomie ponad 0.92 oraz CPU na poziomie przewyższającym 0.13. Zamiana na OR sprawia że jako wynik otrzymujemy wiecej rekordów ponieważ wystarczy, że jest spełniony jeden warunek. Ponadto może sprawić, że system będzie musiał przeszukać o wiele wiecej rekordów przez co koszty operacje będą wzrastać.
+
+Zad.2
+Kod:
+/**
+ CREATE INDEX idx_PasswordSalt ON Person.Password(PasswordSalt);**/
+ SELECT BusinessEntityID, PasswordSalt 
+ FROM Person.Password
+ WHERE PasswordSalt = '/xNoRk0=' OR BusinessEntityID='12822';
+
+Po dodaniu indeksu koszt operacji wynosił 27% co oznacza że plan wykonania jest znacznie bardziej optymalny, co utwierdza w stwierdzeniu, że indeksy przyspieszają wyszukiwanie rekordów
+
